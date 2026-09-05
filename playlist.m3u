@@ -109,8 +109,8 @@ http://umperisn.mywire.org/index.php?id=1979&token=DeaTHLesS
 http://umperisn.mywire.org/index.php?id=594211&token=DeaTHLesS
 #EXTINF:-1 tvg-id="" tvg-name="CNBC-E" group-title="Haber",CNBC-E
 http://umperisn.mywire.org/index.php?id=594245&token=DeaTHLesS
-#EXTINF:-1 tvg-logo="https://s.tv100.com/assets/web/images/logo.svg" tvg-name="TV100" group-title="Haber",TV100
-http://europe77.xyz:2095/live/sevgul49/nFSNas21UA/120666.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="TV 100" group-title="Haber",TV 100
+http://umperisn.mywire.org/index.php?id=1989&token=DeaTHLesS
 #EXTINF:-1 tvg-id="" tvg-name="A HABER" group-title="Haber",A HABER
 http://umperisn.mywire.org/index.php?id=1981&token=DeaTHLesS
 #EXTINF:-1 tvg-id="" tvg-name="FLASH HABER" group-title="Haber",FLASH HABER
@@ -9659,8 +9659,6 @@ https://trn03.tulix.tv/gt-star-tv1/index-1788282000-16200.m3u8?token=0631e8753bc
 https://edge1.socialsmart.tv/tv1/bant1/playlist.m3u8
 #EXTINF:-1 tvg-logo="http://picon.tivi-ott.net:25461/picon/TURKEY/tv1kayseri.png" tvg-name="TV 1 KAYSERI" group-title="Diğer",TV 1 KAYSERI
 http://line.tivi-one.net:80/play/live.php?mac=00:1A:79:88:CC:0E&stream=197171&extension=ts&play_token=wgCB9rueyY
-#EXTINF:-1 tvg-id="" tvg-name="TV 100" group-title="Diğer",TV 100
-http://umperisn.mywire.org/index.php?id=1989&token=DeaTHLesS
 #EXTINF:-1 tvg-logo="https://assets.uzunmuhalefet.com/logos/a664ab9a-1c43-4fa8-96b3-99da58649000.png" tvg-url="https://tv264.com.tr/" tvg-id="" tvg-name="TV 264" group-title="Diğer",TV 264
 https://b01c02nl.mediatriple.net/videoonlylive/mtdxkkitgbrckilive/broadcast_5ee244263fd6d.smil/mt_1.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="TV 360" group-title="Diğer",TV 360
@@ -9693,6 +9691,8 @@ http://45.138.173.72:8080/OERXRGdCUExrankyVkxTNitZY2tXN3dKL0xRM29UenhraVY5QnJsbk
 http://line.tivi-one.net:80/play/live.php?mac=00:1A:79:88:CC:0E&stream=196659&extension=ts&play_token=9d3LgPUiM1
 #EXTINF:-1 tvg-logo="https://files.manuscdn.com/user_upload_by_module/session_file/310519663101870451/VHXdgSoDPClqVGGJ.png" tvg-url="https://www.tvbir.com.tr/" tvg-name="TV1 KAYSERI" group-title="Diğer",TV1 KAYSERI
 https://edge1.socialsmart.tv/tv1/bant1/chunks.m3u8
+#EXTINF:-1 tvg-logo="https://s.tv100.com/assets/web/images/logo.svg" tvg-name="TV100" group-title="Diğer",TV100
+http://europe77.xyz:2095/live/sevgul49/nFSNas21UA/120666.m3u8
 #EXTINF:-1 tvg-name="TV100YEDEK" group-title="Diğer",TV100YEDEK
 https://raw.githubusercontent.com/Tahir2020/TR_Avrupa/refs/heads/main/playlist/TV100.m3u
 #EXTINF:-1 tvg-logo="http://photo-tmdb.com/stalker_portal/misc/logos/320/832.png?10807" tvg-name="TV2" group-title="Diğer",TV2
