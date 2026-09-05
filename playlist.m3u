@@ -371,7 +371,7 @@ http://umperisn.mywire.org/index.php?id=1883&token=DeaTHLesS
 http://umperisn.mywire.org/index.php?id=268116&token=DeaTHLesS
 #EXTINF:-1 tvg-id="" tvg-name="TRT HABER" group-title="Haber",TRT HABER
 http://umperisn.mywire.org/index.php?id=1975&token=DeaTHLesS
-#EXTINF:-1 tvg-id="" tvg-name="HALK TV" group-title="Diğer",HALK TV
+#EXTINF:-1 tvg-id="" tvg-name="HALK TV" group-title="Ulusal",HALK TV
 http://umperisn.mywire.org/index.php?id=1977&token=DeaTHLesS
 #EXTINF:-1 tvg-id="" tvg-name="NTV" group-title="Haber",NTV
 http://umperisn.mywire.org/index.php?id=1987&token=DeaTHLesS
@@ -383,9 +383,9 @@ http://umperisn.mywire.org/index.php?id=1985&token=DeaTHLesS
 http://umperisn.mywire.org/index.php?id=1979&token=DeaTHLesS
 #EXTINF:-1 tvg-id="" tvg-name="TV 100" group-title="Diğer",TV 100
 http://umperisn.mywire.org/index.php?id=1989&token=DeaTHLesS
-#EXTINF:-1 tvg-id="" tvg-name="FLASH HABER TV" group-title="Haber",FLASH HABER TV
+#EXTINF:-1 tvg-id="" tvg-name="FLASH HABER TV" group-title="Ulusal",FLASH HABER TV
 http://umperisn.mywire.org/index.php?id=437542&token=DeaTHLesS
-#EXTINF:-1 tvg-id="" tvg-name="ULUSAL KANAL" group-title="Haber",ULUSAL KANAL
+#EXTINF:-1 tvg-id="" tvg-name="ULUSAL KANAL" group-title="Ulusal",ULUSAL KANAL
 http://umperisn.mywire.org/index.php?id=437556&token=DeaTHLesS
 #EXTINF:-1 tvg-id="" tvg-name="ULKE TV" group-title="Haber",ULKE TV
 http://umperisn.mywire.org/index.php?id=437559&token=DeaTHLesS
@@ -513,15 +513,15 @@ http://umperisn.mywire.org/index.php?id=594233&token=DeaTHLesS
 http://umperisn.mywire.org/index.php?id=594757&token=DeaTHLesS
 #EXTINF:-1 tvg-id="" tvg-name="KRT TV" group-title="Diğer",KRT TV
 http://umperisn.mywire.org/index.php?id=594231&token=DeaTHLesS
-#EXTINF:-1 tvg-id="" tvg-name="SOZCU TV" group-title="Diğer",SOZCU TV
+#EXTINF:-1 tvg-id="" tvg-name="SOZCU TV" group-title="Ulusal",SOZCU TV
 http://umperisn.mywire.org/index.php?id=594229&token=DeaTHLesS
-#EXTINF:-1 tvg-id="" tvg-name="FLASH HABER" group-title="Haber",FLASH HABER
+#EXTINF:-1 tvg-id="" tvg-name="FLASH HABER" group-title="Ulusal",FLASH HABER
 http://umperisn.mywire.org/index.php?id=594225&token=DeaTHLesS
 #EXTINF:-1 tvg-id="" tvg-name="EKOTURK" group-title="Ekonomi",EKOTURK
 http://umperisn.mywire.org/index.php?id=594217&token=DeaTHLesS
 #EXTINF:-1 tvg-id="" tvg-name="TVNET" group-title="Diğer",TVNET
 http://umperisn.mywire.org/index.php?id=594213&token=DeaTHLesS
-#EXTINF:-1 tvg-id="" tvg-name="CNBC-E" group-title="Haber",CNBC-E
+#EXTINF:-1 tvg-id="" tvg-name="CNBC-E" group-title="Ulusal",CNBC-E
 http://umperisn.mywire.org/index.php?id=594245&token=DeaTHLesS
 #EXTINF:-1 tvg-id="" tvg-name="TGRT HABER" group-title="Haber",TGRT HABER
 http://umperisn.mywire.org/index.php?id=594211&token=DeaTHLesS
@@ -577,7 +577,7 @@ http://umperisn.mywire.org/index.php?id=165&token=DeaTHLesS
 http://umperisn.mywire.org/index.php?id=531384&token=DeaTHLesS
 #EXTINF:-1 tvg-id="" tvg-name="DOST TV" group-title="Diğer",DOST TV
 http://umperisn.mywire.org/index.php?id=2875&token=DeaTHLesS
-#EXTINF:-1 tvg-id="" tvg-name="MELTEM TV" group-title="Diğer",MELTEM TV
+#EXTINF:-1 tvg-id="" tvg-name="MELTEM TV" group-title="Dini",MELTEM TV
 http://umperisn.mywire.org/index.php?id=2883&token=DeaTHLesS
 #EXTINF:-1 tvg-id="" tvg-name="KUDUS TV" group-title="Diğer",KUDUS TV
 http://umperisn.mywire.org/index.php?id=2884&token=DeaTHLesS
@@ -585,11 +585,11 @@ http://umperisn.mywire.org/index.php?id=2884&token=DeaTHLesS
 http://umperisn.mywire.org/index.php?id=2885&token=DeaTHLesS
 #EXTINF:-1 tvg-id="" tvg-name="GONCA TV" group-title="Diğer",GONCA TV
 http://umperisn.mywire.org/index.php?id=2886&token=DeaTHLesS
-#EXTINF:-1 tvg-id="" tvg-name="VAV TV" group-title="Diğer",VAV TV
+#EXTINF:-1 tvg-id="" tvg-name="VAV TV" group-title="Dini",VAV TV
 http://umperisn.mywire.org/index.php?id=2888&token=DeaTHLesS
 #EXTINF:-1 tvg-id="" tvg-name="LALEGUL RADYO" group-title="Diğer",LALEGUL RADYO
 http://umperisn.mywire.org/index.php?id=137991&token=DeaTHLesS
-#EXTINF:-1 tvg-id="" tvg-name="TV5" group-title="Diğer",TV5
+#EXTINF:-1 tvg-id="" tvg-name="TV5" group-title="Dini",TV5
 http://umperisn.mywire.org/index.php?id=147815&token=DeaTHLesS
 #EXTINF:-1 tvg-id="" tvg-name="SAT 7 TURK" group-title="Diğer",SAT 7 TURK
 http://umperisn.mywire.org/index.php?id=147817&token=DeaTHLesS
@@ -675,7 +675,7 @@ http://umperisn.mywire.org/index.php?id=2949&token=DeaTHLesS
 http://umperisn.mywire.org/index.php?id=2950&token=DeaTHLesS
 #EXTINF:-1 tvg-id="" tvg-name="MERSIN KANAL 33" group-title="Diğer",MERSIN KANAL 33
 http://umperisn.mywire.org/index.php?id=2952&token=DeaTHLesS
-#EXTINF:-1 tvg-id="" tvg-name="ON4 TV" group-title="Diğer",ON4 TV
+#EXTINF:-1 tvg-id="" tvg-name="ON4 TV" group-title="Dini",ON4 TV
 http://umperisn.mywire.org/index.php?id=2955&token=DeaTHLesS
 #EXTINF:-1 tvg-id="" tvg-name="ORDU ALTAS TV" group-title="Diğer",ORDU ALTAS TV
 http://umperisn.mywire.org/index.php?id=2956&token=DeaTHLesS
@@ -919,13 +919,13 @@ http://line.tivi-one.net:80/play/live.php?mac=00:1A:79:88:CC:0E&stream=197166&ex
 http://line.tivi-one.net:80/play/live.php?mac=00:1A:79:88:CC:0E&stream=197164&extension=ts&play_token=nDvHZaixWT
 #EXTINF:-1 tvg-logo="http://picon.tivi-ott.net:25461/picon/TURKEY/UZAYHABER.png" tvg-name="UZAY HABER" group-title="Diğer",UZAY HABER
 http://line.tivi-one.net:80/play/live.php?mac=00:1A:79:88:CC:0E&stream=197161&extension=ts&play_token=oX2laqQH7Y
-#EXTINF:-1 tvg-logo="http://picon.tivi-ott.net:25461/picon/TURKEY/there.png" tvg-name="TV NET" group-title="Haber",TV NET
+#EXTINF:-1 tvg-logo="http://picon.tivi-ott.net:25461/picon/TURKEY/there.png" tvg-name="TV NET" group-title="Ulusal",TV NET
 http://line.tivi-one.net:80/play/live.php?mac=00:1A:79:88:CC:0E&stream=197257&extension=ts&play_token=hQlsXbvuXH
 #EXTINF:-1 tvg-logo="http://picon.tivi-ott.net:25461/picon/TURKEY/Bloomberg_Television_logo.svg.png" tvg-name="BLOOMBERG" group-title="Diğer",BLOOMBERG
 http://line.tivi-one.net:80/play/live.php?mac=00:1A:79:88:CC:0E&stream=197269&extension=ts&play_token=jjLPIkkc
 #EXTINF:-1 tvg-logo="http://picon.tivi-ott.net:25461/picon/TURKEY/24haber.png" tvg-name="24 HABER" group-title="Diğer",24 HABER
 http://line.tivi-one.net:80/play/live.php?mac=00:1A:79:88:CC:0E&stream=197270&extension=ts&play_token=kbSCfqIRQ7
-#EXTINF:-1 tvg-logo="http://picon.tivi-ott.net:25461/picon/TURKEY/krt%20(2).png" tvg-name="KRT" group-title="Diğer",KRT
+#EXTINF:-1 tvg-logo="http://picon.tivi-ott.net:25461/picon/TURKEY/krt%20(2).png" tvg-name="KRT" group-title="Ulusal",KRT
 http://line.tivi-one.net:80/play/live.php?mac=00:1A:79:88:CC:0E&stream=197276&extension=ts&play_token=cqRGvvpTWt
 #EXTINF:-1 tvg-logo="http://picon.tivi-ott.net:25461/picon/TURKEY/kraltv.png" tvg-name="KRAL POP" group-title="Müzik",KRAL POP
 http://line.tivi-one.net:80/play/live.php?mac=00:1A:79:88:CC:0E&stream=197361&extension=ts&play_token=88YQcnlyZu
@@ -1133,7 +1133,7 @@ http://162.212.179.32/akamaissh101/ssh101/ymdanstv/chunks.m3u8
 https://cdn-telenews.yayin.com.tr/telenews/tracks-v1a1/mono.m3u8
 #EXTINF:-1 tvg-logo="https://asset.artidijitalmedya.com/image/400x400/channels/v1/logo_103.png?v=15" tvg-name="MK TV" group-title="Diğer",MK TV
 https://live.artidijitalmedya.com/artidijital_mavikaradeniz/mavikaradeniz/chunks.m3u8
-#EXTINF:-1 tvg-logo="https://s.tv100.com/assets/web/images/logo.svg" tvg-name="TV100" group-title="Haber",TV100
+#EXTINF:-1 tvg-logo="https://s.tv100.com/assets/web/images/logo.svg" tvg-name="TV100" group-title="Ulusal",TV100
 http://europe77.xyz:2095/live/sevgul49/nFSNas21UA/120666.m3u8
 #EXTINF:-1 tvg-logo="https://www.turkhabertv.com/wp-content/uploads/2024/06/Logo164x50.png" tvg-name="TÜRK HABER" group-title="Haber",TÜRK HABER
 https://edge1.socialsmart.tv/turkhaber/bant1/playlist.m3u8
@@ -1179,7 +1179,7 @@ https://cdn-alanyatv.yayin.com.tr/alanyatv/alanyatv/chunklist_w116897790.m3u8
 https://b01c02nl.mediatriple.net/videoonlylive/mtpayqrfkgirxelive/broadcast_5e91c5ac96898.smil/mt_2.m3u8
 #EXTINF:-1 tvg-logo="https://i.postimg.cc/52LT50FC/38500492-ico.png" tvg-name="KONYA KTV" group-title="Diğer",KONYA KTV
 http://cdn-ktvtv.yayin.com.tr/ktvtv/ktvtv/playlist.m3u8
-#EXTINF:-1 tvg-logo="https://www.anadolunettv.com/d/r/logo.png" tvg-name="ANADOLU NET TV" group-title="Haber",ANADOLU NET TV
+#EXTINF:-1 tvg-logo="https://www.anadolunettv.com/d/r/logo.png" tvg-name="ANADOLU NET TV" group-title="Ulusal",ANADOLU NET TV
 https://live.artidijitalmedya.com/artidijital_anadolunet/anadolunet/chunks.m3u8
 #EXTINF:-1 tvg-logo="https://asset.artidijitalmedya.com/image/188x188/channels/v1/logo_295.png?v=8" tvg-name="ART WORLD" group-title="Diğer",ART WORLD
 https://live.artidijitalmedya.com/artidijital_artworld/artworld/chunks.m3u8
@@ -1315,7 +1315,7 @@ http://sup-4k.org/play/live.php?mac=00:1A:79:A9:BA:5B&stream=10773&extension=ts
 http://sup-4k.org/play/live.php?mac=00:1A:79:A9:BA:5B&stream=314614&extension=ts
 #EXTINF:-1 tvg-logo="http://138.199.27.237:8080/TURKIYE/TRT-EBA-TV-HD.png" tvg-name="TRT EBA LISE" group-title="Diğer",TRT EBA LISE
 http://sup-4k.org/play/live.php?mac=00:1A:79:A9:BA:5B&stream=314597&extension=ts
-#EXTINF:-1 tvg-logo="http://138.199.27.237:8080/TURKIYE/TV%204HDPLUS.png" tvg-name="TV4" group-title="Diğer",TV4
+#EXTINF:-1 tvg-logo="http://138.199.27.237:8080/TURKIYE/TV%204HDPLUS.png" tvg-name="TV4" group-title="Ulusal",TV4
 http://sup-4k.org/play/live.php?mac=00:1A:79:A9:BA:5B&stream=10775&extension=ts
 #EXTINF:-1 tvg-logo="http://138.199.27.237:8080/TURKIYE/TEVE2HDPLUS.png" tvg-name="TEVE2" group-title="Ulusal",TEVE2
 http://sup-4k.org/play/live.php?mac=00:1A:79:A9:BA:5B&stream=314615&extension=ts
@@ -1779,7 +1779,7 @@ http://sup-4k.org/play/live.php?mac=00:1A:79:A9:BA:5B&stream=314403&extension=ts
 http://sup-4k.org/play/live.php?mac=00:1A:79:A9:BA:5B&stream=314406&extension=ts
 #EXTINF:-1 tvg-logo="https://www.lyngsat-logo.com/logo/tv/nn/ntv_tr.png" tvg-name="NTV HABER" group-title="Diğer",NTV HABER
 http://sup-4k.org/play/live.php?mac=00:1A:79:A9:BA:5B&stream=170676&extension=ts
-#EXTINF:-1 tvg-logo="http://138.199.27.237:8080/TURKIYE/szctv.png" tvg-name="SÖZCÜ SZC TV" group-title="Diğer",SÖZCÜ SZC TV
+#EXTINF:-1 tvg-logo="http://138.199.27.237:8080/TURKIYE/szctv.png" tvg-name="SÖZCÜ SZC TV" group-title="Ulusal",SÖZCÜ SZC TV
 http://sup-4k.org/play/live.php?mac=00:1A:79:A9:BA:5B&stream=314430&extension=ts
 #EXTINF:-1 tvg-logo="http://103.161.34.238/dreamtv/tv/24%20RAW.jpg" tvg-name="24" group-title="Haber",24
 http://sup-4k.org/play/live.php?mac=00:1A:79:A9:BA:5B&stream=196804&extension=ts
@@ -1807,7 +1807,7 @@ http://sup-4k.org/play/live.php?mac=00:1A:79:A9:BA:5B&stream=314387&extension=ts
 http://sup-4k.org/play/live.php?mac=00:1A:79:A9:BA:5B&stream=314388&extension=ts
 #EXTINF:-1 tvg-logo="" tvg-name="AL TURKMENIA TV" group-title="Diğer",AL TURKMENIA TV
 http://sup-4k.org/play/live.php?mac=00:1A:79:A9:BA:5B&stream=280414&extension=ts
-#EXTINF:-1 tvg-logo="http://photo-tmdb.com/stalker_portal/misc/logos/320/14861.png?82039" tvg-name="NOW" group-title="Diğer",NOW
+#EXTINF:-1 tvg-logo="http://photo-tmdb.com/stalker_portal/misc/logos/320/14861.png?82039" tvg-name="NOW" group-title="Ulusal",NOW
 http://204.52.191.254:80/play/live.php?mac=00:1A:79:76:D0:D3&stream=282383&extension=ts&play_token=EC8GRWBgta
 #EXTINF:-1 tvg-logo="http://photo-tmdb.com/stalker_portal/misc/logos/320/3308.jpg?36121" tvg-name="STAR" group-title="Diğer",STAR
 http://204.52.191.254:80/play/live.php?mac=00:1A:79:76:D0:D3&stream=3384&extension=ts&play_token=LljjWZlbNO
@@ -3109,7 +3109,7 @@ https://trn03.tulix.tv/gt-tivi6/index-1788510600-5400.m3u8?token=0631e8753bcdf25
 https://trn03.tulix.tv/gt-tivi6/index-1788516000-2400.m3u8?token=0631e8753bcdf25bb2a5015db22ec082
 #EXTINF:-1 tvg-logo="https://ginikoturkish.com/thumb/epg/gt-tivi6/20260904124500.jpg" tvg-name="ÜLKELER" group-title="Diğer",ÜLKELER
 https://trn03.tulix.tv/gt-tivi6/index-1788525900-4500.m3u8?token=0631e8753bcdf25bb2a5015db22ec082
-#EXTINF:-1 tvg-logo="http://ginikoturkish.com/channels/logo/cnbc-e-turk.gif" tvg-name="CNBC E TURK LIVE" group-title="Haber",CNBC E TURK LIVE
+#EXTINF:-1 tvg-logo="http://ginikoturkish.com/channels/logo/cnbc-e-turk.gif" tvg-name="CNBC E TURK LIVE" group-title="Ulusal",CNBC E TURK LIVE
 https://trn03.tulix.tv/gt-cnbce/index.m3u8?token=0631e8753bcdf25bb2a5015db22ec082
 #EXTINF:-1 tvg-logo="https://ginikoturkish.com/thumb/epg/gt-cnbce/20260902040000.jpg" tvg-name="SABAH NOTLARI" group-title="Diğer",SABAH NOTLARI
 https://trn03.tulix.tv/gt-cnbce/index-1788321600-1800.m3u8?token=0631e8753bcdf25bb2a5015db22ec082
@@ -3695,7 +3695,7 @@ https://trn03.tulix.tv/gt-haberturktv/index-1788379200-7200.m3u8?token=0631e8753
 https://trn03.tulix.tv/gt-haberturktv/index-1788404400-3600.m3u8?token=0631e8753bcdf25bb2a5015db22ec082
 #EXTINF:-1 tvg-logo="https://ginikoturkish.com/thumb/epg/gt-haberturktv/20260904170000.jpg" tvg-name="OLAYLAR VE GÖRÜSLER" group-title="Diğer",OLAYLAR VE GÖRÜSLER
 https://trn03.tulix.tv/gt-haberturktv/index-1788541200-10800.m3u8?token=0631e8753bcdf25bb2a5015db22ec082
-#EXTINF:-1 tvg-logo="http://ginikoturkish.com/channels/logo/halk-tv-epg-.jpg" tvg-name="HALK TV LIVE" group-title="Diğer",HALK TV LIVE
+#EXTINF:-1 tvg-logo="http://ginikoturkish.com/channels/logo/halk-tv-epg-.jpg" tvg-name="HALK TV LIVE" group-title="Ulusal",HALK TV LIVE
 https://trn03.tulix.tv/gt-halk-tvs/index.m3u8?token=0631e8753bcdf25bb2a5015db22ec082
 #EXTINF:-1 tvg-logo="https://ginikoturkish.com/thumb/epg/gt-halk-tvs/20260902050000.jpg" tvg-name="EBRU BAKI ILE PARA SIYASET" group-title="Diğer",EBRU BAKI ILE PARA SIYASET
 https://trn03.tulix.tv/gt-halk-tvs/index-1788325200-10800.m3u8?token=0631e8753bcdf25bb2a5015db22ec082
@@ -4671,7 +4671,7 @@ https://trn03.tulix.tv/gt-ulusal-tv/index-1788424200-1800.m3u8?token=0631e8753bc
 https://trn03.tulix.tv/gt-ulusal-tv/index-1788339600-10800.m3u8?token=0631e8753bcdf25bb2a5015db22ec082
 #EXTINF:-1 tvg-logo="https://ginikoturkish.com/thumb/epg/gt-ulusal-tv/20260902081500.jpg" tvg-name="DÜNYANIN HABERI" group-title="Diğer",DÜNYANIN HABERI
 https://trn03.tulix.tv/gt-ulusal-tv/index-1788336900-2700.m3u8?token=0631e8753bcdf25bb2a5015db22ec082
-#EXTINF:-1 tvg-logo="http://ginikoturkish.com/channels/logo/meltem-tv.jpg" tvg-name="MELTEM TV LIVE" group-title="Diğer",MELTEM TV LIVE
+#EXTINF:-1 tvg-logo="http://ginikoturkish.com/channels/logo/meltem-tv.jpg" tvg-name="MELTEM TV LIVE" group-title="Dini",MELTEM TV LIVE
 https://trn03.tulix.tv/gt-meltemtv/index.m3u8?token=0631e8753bcdf25bb2a5015db22ec082
 #EXTINF:-1 tvg-logo="https://ginikoturkish.com/thumb/epg/gt-meltemtv/20260902055500.jpg" tvg-name="YEREL GÜNDEM" group-title="Diğer",YEREL GÜNDEM
 https://trn03.tulix.tv/gt-meltemtv/index-1788328500-3600.m3u8?token=0631e8753bcdf25bb2a5015db22ec082
@@ -4897,7 +4897,7 @@ https://bstelevision.com/proxy.php?mode=proxy&url=https%3A%2F%2Ftrn03.tulix.tv%2
 https://bstelevision.com/proxy.php?mode=proxy&url=https%3A%2F%2Ftrn03.tulix.tv%2Fgt-sporsmarthd2%2Findex-1788364800-900.m3u8%3Ftoken%3D0631e8753bcdf25bb2a5015db22ec082
 #EXTINF:-1 tvg-logo="https://ginikoturkish.com/thumb/epg/gt-sporsmarthd2/20260902050000.jpg" tvg-name="AL NASSR GAMBA OSAKA TEKRAR" group-title="Diğer",AL NASSR GAMBA OSAKA TEKRAR
 https://bstelevision.com/proxy.php?mode=proxy&url=https%3A%2F%2Ftrn03.tulix.tv%2Fgt-sporsmarthd2%2Findex-1788325200-7200.m3u8%3Ftoken%3D0631e8753bcdf25bb2a5015db22ec082
-#EXTINF:-1 tvg-logo="http://ginikoturkish.com/channels/logo/sozcu-tv-epg-.png" tvg-name="SOZCU TV LIVE" group-title="Diğer",SOZCU TV LIVE
+#EXTINF:-1 tvg-logo="http://ginikoturkish.com/channels/logo/sozcu-tv-epg-.png" tvg-name="SOZCU TV LIVE" group-title="Ulusal",SOZCU TV LIVE
 https://trn03.tulix.tv/gt-sozcu-livetv/index.m3u8?token=0631e8753bcdf25bb2a5015db22ec082
 #EXTINF:-1 tvg-logo="https://ginikoturkish.com/thumb/epg/gt-sozcu-livetv/20260904110000.jpg" tvg-name="GÜNDEM MASASI" group-title="Diğer",GÜNDEM MASASI
 https://trn03.tulix.tv/gt-sozcu-livetv/index-1788519600-10800.m3u8?token=0631e8753bcdf25bb2a5015db22ec082
