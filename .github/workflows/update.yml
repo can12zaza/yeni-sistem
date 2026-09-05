@@ -1,15 +1,20 @@
+```yaml
 name: CAN TV Playlist Güncelle
 
 on:
   workflow_dispatch:
+
   schedule:
     - cron: "0 */6 * * *"
+
   push:
     paths:
       - "sources.txt"
       - "categories.json"
       - "config.json"
       - "build.py"
+      - "update_named_channels.py"
+      - "data/kanal_listesi.json"
 
 permissions:
   contents: write
@@ -17,9 +22,12 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Depoyu al
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Python
         uses: actions/setup-python@v5
@@ -27,16 +35,33 @@ jobs:
           python-version: "3.12"
 
       - name: Gereksinimler
-        run: python -m pip install --upgrade pip
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
 
+      # 1. Sabit kanal isimlerinin çalışan kaynaklarını bul
+      - name: Kanal kaynaklarını güncelle
+        run: |
+          python update_named_channels.py
+
+      # 2. TV + Film + Diğer playlistini oluştur
       - name: Playlist oluştur
-        run: python build.py
+        run: |
+          python build.py
 
+      # 3. Sonuçları GitHub'a kaydet
       - name: Değişiklikleri kaydet
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add playlist.m3u
+
+          git add \
+            playlist.m3u \
+            data/kanal_kaynaklari.m3u \
+            data/kanal_raporu.json
+
           git diff --cached --quiet && echo "Değişiklik yok" && exit 0
-          git commit -m "chore: update playlist"
+
+          git commit -m "chore: update CAN TV playlist"
           git push
+```
