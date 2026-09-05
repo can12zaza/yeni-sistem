@@ -1,6 +1,6 @@
-```yaml
-name: CAN TV Playlist Güncelle
 
+name: CAN TV Playlist Güncelle
+ 
 on:
   workflow_dispatch:
 
@@ -64,4 +64,4 @@ jobs:
 
           git commit -m "chore: update CAN TV playlist"
           git push
-```
+
