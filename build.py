@@ -3,17 +3,18 @@
 
 """
 CAN TV - Playlist Builder
+v3
 
 Özellikler:
-- sources.txt içindeki M3U kaynaklarını birleştirir
+- sources.txt kaynaklarını birleştirir
 - Aynı URL'leri temizler
-- Aynı kanalın farklı kalite sürümlerinden en kalitelisini seçer
-- categories.json içindeki kategori sırasını korur
-- categories.json içindeki kanal sırasını korur
-- Alias desteği vardır
-- group-title ve tvg-name yeniden oluşturulur
-- Film tespitini kontrollü yapar
-- categories.json'da olmayan kanalları Diğer'e atar
+- Aynı kanalın en kaliteli sürümünü seçer
+- categories.json kategori sırasını korur
+- categories.json kanal sırasını korur
+- Alias desteği
+- Kontrollü film tespiti
+- group-title / tvg-name düzenleme
+- Bilinmeyen kanalları Diğer'e atma
 """
 
 import json
@@ -33,60 +34,81 @@ CATEGORIES = ROOT / "categories.json"
 CONFIG = ROOT / "config.json"
 OUTPUT = ROOT / "playlist.m3u"
 
-UA = "Mozilla/5.0 (CAN-TV-Builder/2.0)"
+UA = "Mozilla/5.0 (CAN-TV-Builder/3.0)"
 
 
 # ============================================================
 # NORMALIZE
 # ============================================================
 
-def norm(s):
+def norm(value):
     """
-    Kanal isimlerini karşılaştırılabilir hale getirir.
+    Kanal isimlerini karşılaştırmak için normalize eder.
 
     Örnek:
-        TV 8       -> TV 8
-        TV8        -> TV8
-        HaberTürk  -> HABERTURK
-        TRT MÜZİK  -> TRT MUZIK
+
+    TRT MÜZİK -> TRT MUZIK
+    HABERTÜRK -> HABERTURK
+    TV8       -> TV8
+    TV 8      -> TV 8
     """
 
-    s = (s or "").upper()
+    s = str(value or "").upper().strip()
 
-    tr = str.maketrans(
-        "İŞĞÜÖÇ",
-        "ISGUOC"
+    # Türkçe karakterler
+    tr_map = str.maketrans(
+        {
+            "İ": "I",
+            "Ş": "S",
+            "Ğ": "G",
+            "Ü": "U",
+            "Ö": "O",
+            "Ç": "C",
+            "Â": "A",
+            "Î": "I",
+            "Û": "U",
+        }
     )
 
-    s = s.translate(tr)
+    s = s.translate(tr_map)
 
     # Kalite ifadelerini kaldır
     s = re.sub(
         r"\b(FHD|UHD|HD|SD|4K|HEVC|H265|H264|FULL HD)\b",
         " ",
-        s
+        s,
+        flags=re.IGNORECASE,
     )
 
-    # Noktalama işaretlerini boşluğa çevir
-    s = re.sub(r"[^A-Z0-9]+", " ", s)
+    # Noktalama işaretleri
+    s = re.sub(
+        r"[^A-Z0-9]+",
+        " ",
+        s,
+    )
 
-    return re.sub(r"\s+", " ", s).strip()
+    return re.sub(
+        r"\s+",
+        " ",
+        s,
+    ).strip()
 
 
 # ============================================================
-# SOURCES
+# SOURCES.TXT
 # ============================================================
 
 def read_sources():
+
     if not SOURCES.exists():
-        print("[UYARI] sources.txt bulunamadı.")
+        print("[HATA] sources.txt bulunamadı.")
         return []
 
-    result = []
+    sources = []
 
     for line in SOURCES.read_text(
         encoding="utf-8",
-        errors="ignore"
+        errors="ignore",
     ).splitlines():
 
         line = line.strip()
@@ -97,39 +119,45 @@ def read_sources():
         if line.startswith("#"):
             continue
 
-        result.append(line)
+        sources.append(line)
 
-    return result
+    return sources
 
 
 # ============================================================
-# URL'DEN M3U AL
+# M3U İNDİR
 # ============================================================
 
 def fetch(url, timeout):
-    req = Request(
+
+    request = Request(
         url,
         headers={
-            "User-Agent": UA
-        }
+            "User-Agent": UA,
+            "Accept": "*/*",
+        },
     )
 
-    with urlopen(req, timeout=timeout) as response:
+    with urlopen(
+        request,
+        timeout=timeout,
+    ) as response:
+
         return response.read().decode(
             "utf-8",
-            errors="ignore"
+            errors="ignore",
         )
 
 
 # ============================================================
-# M3U PARSE
+# M3U PARSER
 # ============================================================
 
 def parse_m3u(text):
 
     lines = text.splitlines()
 
-    result = []
+    records = []
 
     i = 0
 
@@ -144,23 +172,36 @@ def parse_m3u(text):
             j = i + 1
 
             # Boş satırları geç
-            while j < len(lines) and not lines[j].strip():
+            while j < len(lines):
+
+                next_line = lines[j].strip()
+
+                if next_line:
+                    break
+
                 j += 1
 
             if j < len(lines):
 
                 url = lines[j].strip()
 
-                # Yeni EXTINF gelmişse URL değildir
-                if not url.startswith("#"):
+                # URL satırı # ile başlamamalı
+                if url and not url.startswith("#"):
 
                     if "," in ext:
-                        name = ext.split(",", 1)[1].strip()
+                        name = ext.split(
+                            ",",
+                            1,
+                        )[1].strip()
                     else:
                         name = "KANAL"
 
-                    result.append(
-                        (name, ext, url)
+                    records.append(
+                        (
+                            name,
+                            ext,
+                            url,
+                        )
                     )
 
                     i = j + 1
@@ -168,7 +209,7 @@ def parse_m3u(text):
 
         i += 1
 
-    return result
+    return records
 
 
 # ============================================================
@@ -180,57 +221,69 @@ ALIASES = {
     "TV8": [
         "TV 8",
         "TV8 HD",
-        "TV 8 HD"
+        "TV 8 HD",
     ],
 
-    "TV8 5": [
+    "TV 8.5": [
         "TV8.5",
-        "TV 8.5",
+        "TV 8 5",
         "TV8 5",
-        "TV 8 5"
     ],
 
-    "HABERTURK": [
+    "HABERTÜRK": [
+        "HABERTURK",
         "HABER TURK",
         "HABER TÜRK",
-        "HABERTÜRK",
-        "HABERTÜRK HD"
     ],
 
     "NATIONAL GEOGRAPHIC": [
         "NAT GEO",
-        "NATIONAL GEOGRAPHIC HD"
     ],
 
     "NATIONAL GEOGRAPHIC WILD": [
         "NAT GEO WILD",
         "NAT WILD",
-        "NATIONAL GEOGRAPHIC WILD HD"
     ],
 
     "DISCOVERY ID": [
         "ID DISCOVERY",
         "INVESTIGATION DISCOVERY",
-        "ID"
     ],
 
-    "TRT MUZIK": [
-        "TRT MÜZİK",
-        "TRT MUZİK"
+    "TRT MÜZİK": [
+        "TRT MUZIK",
     ],
 
-    "DREAM TURK": [
-        "DREAM TÜRK"
+    "DREAM TÜRK": [
+        "DREAM TURK",
     ],
 
-    "NR1 TURK": [
-        "NR1 TÜRK",
-        "NR1 TURK"
+    "NR1 TÜRK": [
+        "NR1 TURK",
     ],
 
     "BEIN SPORTS HABER": [
         "BEIN HABER",
-        "BEIN SPORTS HABER HD"
+    ],
+
+    "BLOOMBERG HT": [
+        "BLOOMBERGHT",
+    ],
+
+    "EKOTÜRK": [
+        "EKOTURK",
+    ],
+
+    "LIFETIME": [
+        "LIFE TIME",
+    ],
+
+    "KRAL FM": [
+        "KIRAL FM",
+    ],
+
+    "KRAL POP": [
+        "KIRAL POP",
     ],
 }
 
@@ -243,6 +296,7 @@ def make_alias_index(categories):
 
     index = {}
 
+    # Önce categories.json
     for category, names in categories.items():
 
         if not isinstance(names, list):
@@ -255,73 +309,133 @@ def make_alias_index(categories):
             if key:
                 index[key] = category
 
-    # Alias'ları ekle
-    for base, aliases in ALIASES.items():
+    # Sonra aliaslar
+    for canonical, aliases in ALIASES.items():
 
-        base_key = norm(base)
+        canonical_key = norm(canonical)
 
-        if base_key in index:
+        if canonical_key not in index:
+            continue
 
-            category = index[base_key]
+        category = index[canonical_key]
 
-            for alias in aliases:
+        for alias in aliases:
 
-                index[norm(alias)] = category
+            alias_key = norm(alias)
+
+            if alias_key:
+                index[alias_key] = category
 
     return index
 
 
 # ============================================================
-# FİLM KONTROLÜ
+# FİLM TESPİTİ
 # ============================================================
 
 def is_film(name, ext):
 
-    name_norm = norm(name)
+    """
+    SADECE gerçek film kayıtlarını yakalamaya çalışır.
+
+    ÖNEMLİ:
+    'FILM', 'MOVIE', 'MOVIES' kelimesine tek başına
+    bakılmaz.
+
+    Böylece:
+
+    BEIN MOVIES PREMIERE
+    BEIN MOVIES ACTION
+    FILMSCREEN
+    SİNEMA TV
+
+    yanlışlıkla Film kategorisine gitmez.
+    """
 
     ext_upper = (ext or "").upper()
 
-    # Öncelikle film kaynaklarını kontrol et
-    film_source_patterns = [
+    name_upper = (name or "").upper()
+
+    # --------------------------------------------------------
+    # 1. tvg-year
+    # --------------------------------------------------------
+
+    if re.search(
+        r'tvg[-_ ]?year\s*=\s*["\']?\d{4}',
+        ext_upper,
+        re.IGNORECASE,
+    ):
+        return True
+
+    # --------------------------------------------------------
+    # 2. TMDB
+    # --------------------------------------------------------
+
+    tmdb_patterns = [
         "IMAGE.TMDB.ORG",
         "IMAGE TMDB ORG",
-        "TVG-YEAR",
-        "TVG_YEAR",
-        "TVG YEAR",
-        "FILMDIZI",
-        "FILM DIZI"
+        "TMDB.ORG",
+        "IMAGE.TMDB",
     ]
 
-    for pattern in film_source_patterns:
+    for pattern in tmdb_patterns:
 
         if pattern in ext_upper:
             return True
 
-    # tvg-year XML attribute
+    # --------------------------------------------------------
+    # 3. Film/Dizi arşivi kaynak işaretleri
+    # --------------------------------------------------------
+
+    archive_patterns = [
+        "FILMDIZI",
+        "FILM DIZI",
+        "FILM-DIZI",
+        "MOVIE-DATABASE",
+        "MOVIEDB",
+    ]
+
+    for pattern in archive_patterns:
+
+        if pattern in ext_upper:
+            return True
+
+    # --------------------------------------------------------
+    # 4. Kanal isminin sonunda yıl
+    # --------------------------------------------------------
+
     if re.search(
-        r'tvg-year\s*=\s*["\']?\d{4}',
-        ext,
-        re.IGNORECASE
+        r"\b(?:19|20)\d{2}\s*$",
+        norm(name),
     ):
         return True
 
-    # İsmin sonundaki yıl
-    if re.search(
-        r"\b(19|20)\d{2}\s*$",
-        name_norm
-    ):
-        return True
+    # --------------------------------------------------------
+    # 5. Açık film kaynağı bilgisi
+    # --------------------------------------------------------
+
+    source_patterns = [
+        "TURKCE DUBLAJ",
+        "TURKCE ALTYAZI",
+        "IMDB",
+    ]
+
+    # Sadece EXTINF metadata içinde kontrol et
+    for pattern in source_patterns:
+
+        if pattern in ext_upper:
+            return True
 
     return False
 
 
 # ============================================================
-# KATEGORİ BUL
+# KATEGORİ BELİRLE
 # ============================================================
 
 def category_for(name, ext, index):
 
-    # Film kontrolü
+    # Önce gerçek film
     if is_film(name, ext):
         return "Film"
 
@@ -330,11 +444,17 @@ def category_for(name, ext, index):
     if not n:
         return "Diğer"
 
+    # --------------------------------------------------------
     # Tam eşleşme
+    # --------------------------------------------------------
+
     if n in index:
         return index[n]
 
-    # Kontrollü çok kelimeli eşleşme
+    # --------------------------------------------------------
+    # Çok kelimeli kontrollü eşleşme
+    # --------------------------------------------------------
+
     tokens = set(n.split())
 
     best_category = None
@@ -344,6 +464,7 @@ def category_for(name, ext, index):
 
         key_tokens = key.split()
 
+        # Tek kelimeli substring kullanma
         if len(key_tokens) < 2:
             continue
 
@@ -366,48 +487,66 @@ def category_for(name, ext, index):
 
 def quality(name):
 
-    u = (name or "").upper()
+    value = (name or "").upper()
 
-    # En yüksek
-    if "4K" in u or "UHD" in u:
+    # 4K / UHD
+    if re.search(
+        r"\b(4K|UHD)\b",
+        value,
+    ):
         return 4
 
-    if "FHD" in u or "FULL HD" in u:
+    # FHD
+    if re.search(
+        r"\b(FHD|FULL HD)\b",
+        value,
+    ):
         return 3
 
-    if re.search(r"\bHD\b", u):
+    # HD
+    if re.search(
+        r"\bHD\b",
+        value,
+    ):
         return 2
 
-    if re.search(r"\bSD\b", u):
+    # SD
+    if re.search(
+        r"\bSD\b",
+        value,
+    ):
         return 1
 
     return 0
 
 
 # ============================================================
-# EXTINF YENİDEN OLUŞTUR
+# EXTINF DÜZENLE
 # ============================================================
 
 def rewrite_ext(ext, name, group):
 
-    # tvg-name sil
+    # Eski tvg-name
     ext = re.sub(
-        r'\s+tvg-name="[^"]*"',
+        r'\s+tvg-name\s*=\s*"[^"]*"',
         "",
         ext,
-        flags=re.IGNORECASE
+        flags=re.IGNORECASE,
     )
 
-    # group-title sil
+    # Eski group-title
     ext = re.sub(
-        r'\s+group-title="[^"]*"',
+        r'\s+group-title\s*=\s*"[^"]*"',
         "",
         ext,
-        flags=re.IGNORECASE
+        flags=re.IGNORECASE,
     )
 
-    # virgülden önceki bölüm
-    prefix = ext.split(",", 1)[0]
+    # Virgülden önceki bölüm
+    prefix = ext.split(
+        ",",
+        1,
+    )[0].strip()
 
     return (
         f'{prefix} '
@@ -418,46 +557,40 @@ def rewrite_ext(ext, name, group):
 
 
 # ============================================================
-# KANAL LİSTESİNİ SIRALA
+# KATEGORİ SIRASI
 # ============================================================
 
-def sort_by_categories(items, categories, index):
+def build_category_order(categories):
 
-    """
-    categories.json sırasını kullanır.
+    order = {}
 
-    Önce:
-        categories.json kategori sırası
+    number = 0
 
-    Sonra:
-        kategori içindeki kanal sırası
+    for category in categories.keys():
 
-    En son:
-        categories.json'da olmayanlar
-    """
+        order[category] = number
 
-    # --------------------------------------------------------
-    # Kategori sıralaması
-    # --------------------------------------------------------
+        number += 1
 
-    category_order = {}
+    # Film en sona yakın
+    if "Film" not in order:
 
-    for category_number, category in enumerate(categories.keys()):
-        category_order[category] = category_number
+        order["Film"] = number
+        number += 1
 
-    # Diğer kategori en sona
-    if "Diğer" not in category_order:
-        category_order["Diğer"] = len(category_order)
+    # Diğer kesinlikle son
+    order["Diğer"] = number
 
-    # Film yoksa sona eklenebilir
-    if "Film" not in category_order:
-        category_order["Film"] = len(category_order)
+    return order
 
-    # --------------------------------------------------------
-    # Kanal sıralaması
-    # --------------------------------------------------------
 
-    channel_order = {}
+# ============================================================
+# KANAL SIRASI
+# ============================================================
+
+def build_channel_order(categories):
+
+    order = {}
 
     for category, names in categories.items():
 
@@ -469,11 +602,24 @@ def sort_by_categories(items, categories, index):
             key = norm(name)
 
             if key:
-                channel_order[key] = number
+                order[key] = number
 
-    # --------------------------------------------------------
-    # Sıralama
-    # --------------------------------------------------------
+    return order
+
+
+# ============================================================
+# PLAYLIST SIRALA
+# ============================================================
+
+def sort_items(items, categories, index):
+
+    category_order = build_category_order(
+        categories
+    )
+
+    channel_order = build_channel_order(
+        categories
+    )
 
     def sort_key(item):
 
@@ -482,34 +628,40 @@ def sort_by_categories(items, categories, index):
         category = category_for(
             name,
             ext,
-            index
+            index,
         )
 
-        cat_number = category_order.get(
+        category_number = category_order.get(
             category,
-            999999
+            999999,
         )
 
         name_key = norm(name)
 
         channel_number = channel_order.get(
             name_key,
-            999999
+            999999,
         )
 
-        # categories.json'da olmayanlar kendi arasında
-        # alfabetik sıralanır
-        fallback_name = name_key
+        # categories.json'da bulunanlar
+        if channel_number != 999999:
 
+            return (
+                category_number,
+                0,
+                channel_number,
+            )
+
+        # categories.json'da bulunmayanlar
         return (
-            cat_number,
-            channel_number,
-            fallback_name
+            category_number,
+            1,
+            name_key,
         )
 
     return sorted(
         items,
-        key=sort_key
+        key=sort_key,
     )
 
 
@@ -519,9 +671,11 @@ def sort_by_categories(items, categories, index):
 
 def main():
 
-    print("=" * 60)
-    print("CAN TV PLAYLIST BUILDER")
-    print("=" * 60)
+    print()
+    print("=" * 65)
+    print("CAN TV - PLAYLIST BUILDER v3")
+    print("=" * 65)
+    print()
 
     # --------------------------------------------------------
     # CONFIG
@@ -530,9 +684,10 @@ def main():
     if CONFIG.exists():
 
         try:
-            cfg = json.loads(
+
+            config = json.loads(
                 CONFIG.read_text(
-                    encoding="utf-8"
+                    encoding="utf-8",
                 )
             )
 
@@ -542,15 +697,16 @@ def main():
                 f"[UYARI] config.json okunamadı: {e}"
             )
 
-            cfg = {}
+            config = {}
 
     else:
-        cfg = {}
+
+        config = {}
 
     timeout = int(
-        cfg.get(
+        config.get(
             "request_timeout",
-            15
+            15,
         )
     )
 
@@ -570,7 +726,7 @@ def main():
 
         categories = json.loads(
             CATEGORIES.read_text(
-                encoding="utf-8"
+                encoding="utf-8",
             )
         )
 
@@ -585,7 +741,7 @@ def main():
     if not isinstance(categories, dict):
 
         print(
-            "[HATA] categories.json bir JSON nesnesi olmalı."
+            "[HATA] categories.json JSON nesnesi olmalı."
         )
 
         return
@@ -595,7 +751,7 @@ def main():
     )
 
     # --------------------------------------------------------
-    # KAYNAKLARI OKU
+    # SOURCES
     # --------------------------------------------------------
 
     sources = read_sources()
@@ -603,7 +759,7 @@ def main():
     if not sources:
 
         print(
-            "[HATA] sources.txt boş veya bulunamadı."
+            "[HATA] sources.txt boş."
         )
 
         return
@@ -614,7 +770,7 @@ def main():
 
     all_items = []
 
-    ok_sources = 0
+    successful_sources = 0
 
     for source in sources:
 
@@ -622,7 +778,7 @@ def main():
 
             text = fetch(
                 source,
-                timeout
+                timeout,
             )
 
             items = parse_m3u(
@@ -633,21 +789,30 @@ def main():
                 items
             )
 
-            ok_sources += 1
+            successful_sources += 1
 
             print(
-                f"[OK] {source} -> "
-                f"{len(items)} kayıt"
+                f"[OK] {source}"
+            )
+
+            print(
+                f"     {len(items)} kayıt"
             )
 
         except Exception as e:
 
             print(
-                f"[HATA] {source} -> {e}"
+                f"[HATA] {source}"
             )
 
+            print(
+                f"       {e}"
+            )
+
+    print()
+
     # --------------------------------------------------------
-    # URL DUPLICATE TEMİZLE
+    # URL DUPLICATE
     # --------------------------------------------------------
 
     by_url = {}
@@ -659,17 +824,20 @@ def main():
         if not url:
             continue
 
-        if (
-            url not in by_url
-            or quality(name)
-            >
-            quality(by_url[url][0])
-        ):
+        if url not in by_url:
 
             by_url[url] = item
 
+        else:
+
+            old = by_url[url]
+
+            if quality(name) > quality(old[0]):
+
+                by_url[url] = item
+
     # --------------------------------------------------------
-    # AYNI KANAL ADI DUPLICATE
+    # AYNI KANAL ADI
     # --------------------------------------------------------
 
     best = {}
@@ -683,31 +851,30 @@ def main():
         if not key:
             continue
 
-        if (
-            key not in best
-            or quality(name)
-            >
-            quality(best[key][0])
-        ):
+        if key not in best:
 
             best[key] = item
 
+        else:
+
+            old = best[key]
+
+            if quality(name) > quality(old[0]):
+
+                best[key] = item
+
     # --------------------------------------------------------
-    # LİSTE
+    # SIRALA
     # --------------------------------------------------------
 
     items = list(
         best.values()
     )
 
-    # --------------------------------------------------------
-    # CATEGORIES.JSON SIRASINA GÖRE SIRALA
-    # --------------------------------------------------------
-
-    items = sort_by_categories(
+    items = sort_items(
         items,
         categories,
-        index
+        index,
     )
 
     # --------------------------------------------------------
@@ -725,14 +892,14 @@ def main():
         group = category_for(
             name,
             ext,
-            index
+            index,
         )
 
         output.append(
             rewrite_ext(
                 ext,
                 name,
-                group
+                group,
             )
         )
 
@@ -745,29 +912,28 @@ def main():
         )
 
     # --------------------------------------------------------
-    # DOSYAYA YAZ
+    # DOSYAYI YAZ
     # --------------------------------------------------------
 
     OUTPUT.write_text(
         "\n".join(output) + "\n",
-        encoding="utf-8"
+        encoding="utf-8",
     )
 
     # --------------------------------------------------------
     # RAPOR
     # --------------------------------------------------------
 
-    print()
-    print("=" * 60)
+    print("=" * 65)
     print("SONUÇ")
-    print("=" * 60)
+    print("=" * 65)
 
     print(
         f"Kaynak sayısı   : {len(sources)}"
     )
 
     print(
-        f"Başarılı kaynak : {ok_sources}"
+        f"Başarılı kaynak : {successful_sources}"
     )
 
     print(
@@ -783,56 +949,40 @@ def main():
     )
 
     print()
+
     print("KATEGORİLER")
-    print("-" * 40)
+    print("-" * 65)
 
-    # ÖNEMLİ:
-    # sorted() KULLANMIYORUZ.
-    # categories.json sırasını koruyor.
-
-    printed = set()
-
+    # categories.json sırası
     for category in categories.keys():
 
-        if category in counts:
-
-            print(
-                f"{category}: "
-                f"{counts[category]}"
-            )
-
-            printed.add(
-                category
-            )
+        print(
+            f"{category}: "
+            f"{counts.get(category, 0)}"
+        )
 
     # Film
-    if (
-        "Film" in counts
-        and "Film" not in printed
-    ):
+    if "Film" in counts:
 
         print(
             f"Film: {counts['Film']}"
         )
 
-        printed.add("Film")
-
     # Diğer
-    if (
-        "Diğer" in counts
-        and "Diğer" not in printed
-    ):
+    if "Diğer" in counts:
 
         print(
             f"Diğer: {counts['Diğer']}"
         )
 
     print()
+
     print(
         f"Çıktı: {OUTPUT}"
     )
 
-    print("=" * 60)
+    print("=" * 65)
+    print()
 
 
 # ============================================================
