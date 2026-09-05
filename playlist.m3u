@@ -17,8 +17,8 @@ http://umperisn.mywire.org/index.php?id=1847&token=DeaTHLesS
 http://umperisn.mywire.org/index.php?id=1853&token=DeaTHLesS
 #EXTINF:-1 tvg-logo="http://138.199.27.237:8080/TURKIYE/TV8HD.png" tvg-name="TV8" group-title="Ulusal",TV8
 http://sup-4k.org/play/live.php?mac=00:1A:79:A9:BA:5B&stream=10774&extension=ts
-#EXTINF:-1 tvg-logo="http://138.199.27.237:8080/TURKIYE/TV8.5HDPLUS.png" tvg-name="TV8 5" group-title="Ulusal",TV8 5
-http://sup-4k.org/play/live.php?mac=00:1A:79:A9:BA:5B&stream=10773&extension=ts
+#EXTINF:-1 tvg-id="" tvg-name="TV 8.5" group-title="Ulusal",TV 8.5
+http://umperisn.mywire.org/index.php?id=1859&token=DeaTHLesS
 #EXTINF:-1 tvg-id="" tvg-name="KANAL 7" group-title="Ulusal",KANAL 7
 http://umperisn.mywire.org/index.php?id=1863&token=DeaTHLesS
 #EXTINF:-1 tvg-logo="http://138.199.27.237:8080/TURKIYE/TEVE2HDPLUS.png" tvg-name="TEVE2" group-title="Ulusal",TEVE2
@@ -77,16 +77,12 @@ https://trn03.tulix.tv/gt-trt2/index.m3u8?token=0631e8753bcdf25bb2a5015db22ec082
 http://umperisn.mywire.org/index.php?id=1857&token=DeaTHLesS
 #EXTINF:-1 tvg-id="TV8.tr@SD" tvg-name="TV 8 (1080p) [Not 24/7]" group-title="Ulusal",TV 8 (1080p) [Not 24/7]
 https://tv8-live.daioncdn.net/tv8/tv8.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="TV 8.5" group-title="Ulusal",TV 8.5
-http://umperisn.mywire.org/index.php?id=1859&token=DeaTHLesS
 #EXTINF:-1 tvg-id="tv85.tr" tvg-logo="http://2kapak.plustvmedia.com/plustr/tv85.png" tvg-name="TV 8 BUCUK" group-title="Ulusal",TV 8 BUCUK
 http://elit64.eu:2086/barisakin643564/kin643564/13?output=ts
 #EXTINF:-1 tvg-id="" tvg-name="TV 8 INT" group-title="Ulusal",TV 8 INT
 http://umperisn.mywire.org/index.php?id=1883&token=DeaTHLesS
 #EXTINF:-1 tvg-logo="http://photo-tmdb.com/stalker_portal/misc/logos/320/7841.jpg?72942" tvg-name="TV 8 INTERNATIONAL" group-title="Ulusal",TV 8 INTERNATIONAL
 http://204.52.191.254:80/play/live.php?mac=00:1A:79:76:D0:D3&stream=19982&extension=ts&play_token=iHpZaqxvKk
-#EXTINF:-1 tvg-logo="http://ginikoturkish.com/channels/logo/tv8-5-epg-.jpg" tvg-name="TV8 5 LIVE" group-title="Ulusal",TV8 5 LIVE
-https://trn03.tulix.tv/gt-tv8_5/index.m3u8?token=0631e8753bcdf25bb2a5015db22ec082
 #EXTINF:-1 tvg-id="" tvg-name="AKIT TV" group-title="Haber",AKIT TV
 http://umperisn.mywire.org/index.php?id=594237&token=DeaTHLesS
 #EXTINF:-1 tvg-id="" tvg-name="TRT HABER" group-title="Haber",TRT HABER
@@ -7219,6 +7215,10 @@ https://turkmedya-live.ercdn.net/tv4/tv4_1080p.m3u8
 http://umperisn.mywire.org/index.php?id=147815&token=DeaTHLesS
 #EXTINF:-1 tvg-id="" tvg-logo="https://i.hizliresim.com/klzlrbf.png" tvg-name="TV52YEDEK" group-title="Diğer",TV52YEDEK
 https://edge1.taksimbilisim.com/tv52/bant1/chunks.m3u8
+#EXTINF:-1 tvg-logo="http://138.199.27.237:8080/TURKIYE/TV8.5HDPLUS.png" tvg-name="TV8 5" group-title="Diğer",TV8 5
+http://sup-4k.org/play/live.php?mac=00:1A:79:A9:BA:5B&stream=10773&extension=ts
+#EXTINF:-1 tvg-logo="http://ginikoturkish.com/channels/logo/tv8-5-epg-.jpg" tvg-name="TV8 5 LIVE" group-title="Diğer",TV8 5 LIVE
+https://trn03.tulix.tv/gt-tv8_5/index.m3u8?token=0631e8753bcdf25bb2a5015db22ec082
 #EXTINF:-1 tvg-logo="http://138.199.27.237:8080/TURKIYE/TV8HD.png" tvg-name="TV8 INT" group-title="Diğer",TV8 INT
 http://sup-4k.org/play/live.php?mac=00:1A:79:A9:BA:5B&stream=314614&extension=ts
 #EXTINF:-1 tvg-logo="http://ginikoturkish.com/channels/logo/tv8-int-epg-.jpg" tvg-name="TV8 INT LIVE" group-title="Diğer",TV8 INT LIVE
